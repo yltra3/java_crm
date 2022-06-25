@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>clausEnterprises.crm.model.Role</OriginalElement>
+  <nodes>
+    <node x="296.56500000000005" y="162.0">clausEnterprises.crm.model.Client</node>
+    <node x="155.0" y="0.0">clausEnterprises.crm.model.Role</node>
+    <node x="142.41" y="283.0">clausEnterprises.crm.model.Order</node>
+    <node x="261.0" y="283.0">clausEnterprises.crm.model.ParentResponse</node>
+    <node x="146.0" y="162.0">clausEnterprises.crm.model.Courier</node>
+    <node x="0.0" y="162.0">clausEnterprises.crm.model.Warehouse</node>
+    <node x="155.5" y="81.0">clausEnterprises.crm.model.User</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="clausEnterprises.crm.model.Courier" target="clausEnterprises.crm.model.User" relationship="TO_ONE">
+      <point x="-25.0" y="-15.5" />
+      <point x="171.0" y="137.0" />
+      <point x="175.75" y="137.0" />
+      <point x="-20.25" y="15.5" />
+    </edge>
+    <edge source="clausEnterprises.crm.model.Order" target="clausEnterprises.crm.model.Warehouse" relationship="DEPENDENCY">
+      <point x="22.5" y="-15.5" />
+      <point x="209.91" y="263.0" />
+      <point x="207.69" y="263.0" />
+      <point x="207.69" y="213.0" />
+      <point x="94.5" y="213.0" />
+      <point x="31.5" y="15.5" />
+    </edge>
+    <edge source="clausEnterprises.crm.model.Courier" target="clausEnterprises.crm.model.User" relationship="DEPENDENCY">
+      <point x="25.0" y="-15.5" />
+      <point x="221.0" y="137.0" />
+      <point x="216.25" y="137.0" />
+      <point x="20.25" y="15.5" />
+    </edge>
+    <edge source="clausEnterprises.crm.model.Order" target="clausEnterprises.crm.model.Courier" relationship="TO_ONE">
+      <point x="-22.5" y="-15.5" />
+      <point x="164.91" y="263.0" />
+      <point x="73.41" y="263.0" />
+      <point x="73.41" y="223.0" />
+      <point x="171.0" y="223.0" />
+      <point x="-25.0" y="15.5" />
+    </edge>
+    <edge source="clausEnterprises.crm.model.Order" target="clausEnterprises.crm.model.Warehouse" relationship="TO_ONE">
+      <point x="-22.5" y="-15.5" />
+      <point x="164.91" y="263.0" />
+      <point x="73.41" y="263.0" />
+      <point x="73.41" y="223.0" />
+      <point x="31.5" y="223.0" />
+      <point x="-31.5" y="15.5" />
+    </edge>
+    <edge source="clausEnterprises.crm.model.Order" target="clausEnterprises.crm.model.Client" relationship="TO_ONE">
+      <point x="-22.5" y="-15.5" />
+      <point x="164.91" y="263.0" />
+      <point x="73.41" y="263.0" />
+      <point x="73.41" y="233.0" />
+      <point x="336.565" y="233.0" />
+      <point x="336.565" y="223.0" />
+      <point x="319.06500000000005" y="223.0" />
+      <point x="-22.5" y="15.5" />
+    </edge>
+    <edge source="clausEnterprises.crm.model.ParentResponse" target="clausEnterprises.crm.model.Client" relationship="DEPENDENCY">
+      <point x="39.25000000000006" y="-15.5" />
+      <point x="378.75000000000006" y="243.0" />
+      <point x="346.56500000000005" y="243.0" />
+      <point x="346.56500000000005" y="233.0" />
+      <point x="364.06500000000005" y="233.0" />
+      <point x="22.5" y="15.5" />
+    </edge>
+    <edge source="clausEnterprises.crm.model.User" target="clausEnterprises.crm.model.Role" relationship="TO_ONE">
+      <point x="20.25" y="-15.5" />
+      <point x="20.5" y="15.5" />
+    </edge>
+    <edge source="clausEnterprises.crm.model.ParentResponse" target="clausEnterprises.crm.model.Client" relationship="TO_ONE">
+      <point x="-39.24999999999994" y="-15.5" />
+      <point x="300.25000000000006" y="243.0" />
+      <point x="336.565" y="243.0" />
+      <point x="336.565" y="223.0" />
+      <point x="319.06500000000005" y="223.0" />
+      <point x="-22.5" y="15.5" />
+    </edge>
+    <edge source="clausEnterprises.crm.model.User" target="clausEnterprises.crm.model.Role" relationship="DEPENDENCY">
+      <point x="-20.25" y="-15.5" />
+      <point x="-20.5" y="15.5" />
+    </edge>
+    <edge source="clausEnterprises.crm.model.Order" target="clausEnterprises.crm.model.Client" relationship="DEPENDENCY">
+      <point x="22.5" y="-15.5" />
+      <point x="209.91" y="263.0" />
+      <point x="207.69" y="263.0" />
+      <point x="207.69" y="253.0" />
+      <point x="346.56500000000005" y="253.0" />
+      <point x="346.56500000000005" y="233.0" />
+      <point x="364.06500000000005" y="233.0" />
+      <point x="22.5" y="15.5" />
+    </edge>
+    <edge source="clausEnterprises.crm.model.Order" target="clausEnterprises.crm.model.Courier" relationship="DEPENDENCY">
+      <point x="22.5" y="-15.5" />
+      <point x="209.91" y="263.0" />
+      <point x="207.69" y="263.0" />
+      <point x="207.69" y="213.0" />
+      <point x="221.0" y="213.0" />
+      <point x="25.0" y="15.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="true" x="209.0" y="157.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

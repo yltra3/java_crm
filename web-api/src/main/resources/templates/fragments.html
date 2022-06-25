@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+</head>
+
+<body>
+
+<div th:fragment="dependencies">
+
+    <!-- Jquery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+    <!-- Semantic UI -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" media="screen"
+          rel="stylesheet" type="text/css">
+
+    <!-- Semantic UI -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+    <script type="text/javascript" th:src="@{/js/main.js}"></script>
+
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="icon" th:href="@{/pic/claus.png}">
+
+</div>
+
+
+<div th:fragment="navbar">
+    <a class="item" th:href="@{/}" style="color: darkred; font-size: 30px; margin-left: 150px">Claus Enterprises</a>
+    <a class="item" sec:authorize="isAnonymous()" th:href="@{/letter}" style="color:black;font-size: 20px;">Send a
+        letter</a>
+
+    <a class="item" sec:authorize="hasRole('COURIER')" th:href="@{/crm/courierService/getAvailableOrders} "
+       style="color:black;font-size: 20px;">Available orders</a>
+    <a class="item" sec:authorize="hasRole('COURIER')" th:href="@{/crm/courierService/getAvailableGifts} "
+       style="color:black;font-size: 20px;">Available gifts</a>
+    <a class="item" sec:authorize="hasRole('COURIER')" th:href="@{/crm/courierService/acceptOrder}"
+       style="color:black;font-size: 20px;">Accept order</a>
+    <a class="item" sec:authorize="hasRole('COURIER')" th:href="@{/crm/courierService/finishOrder} "
+       style="color:black;font-size: 20px;">Finish order</a>
+
+
+    <a class="item" sec:authorize="hasRole('SORTER')" th:href="@{/crm/sorterService/emailCheck} "
+       style="color:black;font-size: 20px;">Mail Box</a>
+    <a class="item" sec:authorize="hasRole('SORTER')" th:href="@{/crm/sorterService/parentResponseCheck}"
+       style="color:black;font-size: 20px;">Requests</a>
+    <a class="item" sec:authorize="hasRole('SORTER')" th:href="@{/crm/sorterService/createDeliveryOrders}"
+       style="color:black;font-size: 20px;">Responses</a>
+
+    <a class="item" sec:authorize="hasRole('DIRECTOR')" th:href="@{/crm/directorService/createCourierReport} "
+       style="color:black;font-size: 20px;">Courier Reports</a>
+    <a class="item" sec:authorize="hasRole('DIRECTOR')" th:href="@{/crm/directorService/createGlobalReport} "
+       style="color:black;font-size: 20px;">Global Reports</a>
+    <a class="item" sec:authorize="hasRole('DIRECTOR')" th:href="@{/crm/directorService/checkUnclearResponse}"
+       style="color:black;font-size: 20px;">Problem Monitoring</a>
+    <a class="item" sec:authorize="hasRole('DIRECTOR')" th:href="@{/crm/directorService/checkParentResponsesSecondTime}"
+       style="color:black;font-size: 20px;">Unknown Behaviour Check</a>
+
+
+    <div class="right menu">
+        <div class="ui item" th:if="${#httpServletRequest.remoteUser != null}">
+            <span class="ui teal label" style="padding: 15px">
+                <i class="user icon"></i>
+                <span style="color: white" th:inline="text">Hello, [[${#httpServletRequest.remoteUser}]]!</span>
+            </span>
+        </div>
+        <div class="ui item" th:if="${#httpServletRequest.remoteUser != null}">
+            <form th:action="@{/logout}" method="post">
+                <input class="ui basic black button" type="submit" value="Sign Out"/>
+            </form>
+        </div>
+        <div class="ui item" th:if="${#httpServletRequest.remoteUser == null}">
+            <a class="ui basic black button" th:href="@{/sign-in}">Employee log-in</a>
+        </div>
+    </div>
+</div>
+
+<header th:fragment="header" th:remove="tag">
+    <div class="ui tablet computer only padded grid" id="computer-navbar">
+        <img th:src="@{/pic/claus.png}" alt="claus" style="position: absolute; height: 200px; z-index: 999">
+        <div class="ui top fixed menu" style="padding: 0; background-color: #02890EFF">
+            <div th:include="this :: navbar" th:remove="tag"></div>
+        </div>
+    </div>
+
+    <div class="ui mobile only padded grid" id="tablet-mobile-navbar">
+        <img th:src="@{/pic/claus.png}" alt="claus" style="position: absolute; height: 120px; z-index: 999">
+        <div class="ui top fixed menu" style="padding: 0; flex-wrap: wrap; background-color: #02890EFF">
+            <div class="right menu">
+                <a id="mobile_item" class="item"><i class="bars icon"></i></a>
+            </div>
+            <div class="ui stackable fluid menu" style="display: none;">
+                <div th:include="this :: navbar" th:remove="tag"></div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div th:fragment="scripts">
+    <script type="text/javascript">
+        $("#mobile_item").click(function () {
+            $(".mobile.only.grid .ui.stackable.menu").toggle(300);
+        });
+        $(".ui.dropdown.item").dropdown();
+    </script>
+</div>
+
+</body>
+</html>

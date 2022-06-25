@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Check gifts</title>
+</head>
+
+<body>
+<div th:insert="fragments :: dependencies"></div>
+<div th:insert="fragments :: header"></div>
+
+<div class="ui segment" style="height:500px;overflow:auto;">
+    <h3 class="ui dividing header">Check available gifts</h3>
+    <table style="border:1px solid black;margin-left:auto;margin-right:auto" class="center">
+        <thead>
+        <tr>
+            <th>Gift ID</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${availableGifts.getDtos().isEmpty()}">
+            <td colspan="3"> No gifts have been found</td>
+        </tr>
+        <tr th:each="order :${availableGifts.getDtos()}">
+            <td><span th:text="${order.id}">Gift ID</span></td>
+            <td><span th:text="${order.description}">Gift Description</span></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:insert="fragments :: scripts"></div>
+</body>
+
+</html>

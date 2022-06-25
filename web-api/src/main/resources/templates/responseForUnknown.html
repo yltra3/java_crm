@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Check unknown responses</title>
+</head>
+
+<body>
+<div th:insert="fragments :: dependencies"></div>
+<div th:insert="fragments :: header"></div>
+
+<div class="ui segment" style="height: 500px;">
+    <h3 class="ui dividing header">Check parent responses</h3>
+    <table style="border:1px solid black;margin-left:auto;margin-right:auto" class="center">
+        <thead>
+        <tr>
+            <th>Client Email</th>
+            <th>Parent Email</th>
+            <th>Behaviour</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${responseForUnknown.getDtos().isEmpty()}">
+            <td colspan="3"> No responses have been found</td>
+        </tr>
+        <tr th:each="email :${responseForUnknown.getDtos()}">
+            <td><span th:text="${email.clientEmail}">ClientEmail</span></td>
+            <td><span th:text="${email.parentEmail}">ParentEmail</span></td>
+            <td><span th:text="${email.behaviour}">Behaviour</span></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:insert="fragments :: scripts"></div>
+</body>
+
+</html>

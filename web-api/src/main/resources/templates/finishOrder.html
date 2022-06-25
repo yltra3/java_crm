@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <meta charset="UTF-8">
+  <title>Finish order</title>
+</head>
+
+<body>
+<div th:insert="fragments :: dependencies"></div>
+<div th:insert="fragments :: header"></div>
+
+<div class="ui segment" style="height: 270px">
+  <h3 class="ui dividing header">Finish order</h3>
+  <form class="ui form" action="#" modelAttribute="order"
+        th:action="@{/crm/courierService/finishOrder}"
+        th:object="${order}" method="post">
+    <div class="fields">
+      <div class="field">
+        <label>Order ID:</label>
+        <select class="form-control" th:field="${order.orderId}"  id="orderDropOperator">
+          <option value="0">Select order id</option>
+          <option th:each="id : ${orderIds}" th:value="${id}" th:text="${id}"></option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Courier ID:</label>
+        <select class="form-control" th:field="${order.courierId}"  id="courierDropOperator">
+          <option value="0">Select courier id</option>
+          <option th:each="id : ${courierIds}" th:value="${id}" th:text="${id}"></option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Delivery status:</label>
+        <select class="ui dropdown" th:field="*{orderStatus}"  id="resourceSelect">
+          <option value="DELIVERED">Delivered</option>
+          <option value="DESTROYED">Destroyed</option>
+          <option value="LOST">Lost</option>
+          <option value="CONFISCATED">Confiscated</option>
+        </select>
+      </div>
+    </div>
+    <div class="ui divider"></div>
+    <input class="ui blue fluid button" type="submit" value="Submit"/>
+    <div class="ui divider"></div>
+  </form>
+</div>
+
+
+<div th:insert="fragments :: scripts"></div>
+</body>
+
+</html>
